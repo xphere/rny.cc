@@ -12,5 +12,6 @@ class DefaultControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/');
         $this->assertTrue($client->getResponse()->isSuccessful());
         $this->assertCount(1, $crawler->filter('html head + body'));
+        $this->assertCount(1, $crawler->filter('form'));
     }
 }

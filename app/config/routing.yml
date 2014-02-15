@@ -1,0 +1,4 @@
+berny_front:
+    resource: "@BernyFrontBundle/Resources/config/routing.xml"
+    prefix: /
+

@@ -17,6 +17,9 @@ class DefaultControllerTest extends WebTestCase
         $button = $crawler->selectButton('rnycc_urlshortener[save]');
         $form = $button->form();
         $client->submit($form);
+        $this->assertTrue($client->getResponse()->isRedirection());
+
+        $client->followRedirect();
         $this->assertTrue($client->getResponse()->isSuccessful());
     }
 }

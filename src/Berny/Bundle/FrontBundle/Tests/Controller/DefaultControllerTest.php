@@ -13,5 +13,10 @@ class DefaultControllerTest extends WebTestCase
         $this->assertTrue($client->getResponse()->isSuccessful());
         $this->assertCount(1, $crawler->filter('html head + body'));
         $this->assertCount(1, $crawler->filter('form'));
+
+        $button = $crawler->selectButton('rnycc_urlshortener[save]');
+        $form = $button->form();
+        $client->submit($form);
+        $this->assertTrue($client->getResponse()->isSuccessful());
     }
 }

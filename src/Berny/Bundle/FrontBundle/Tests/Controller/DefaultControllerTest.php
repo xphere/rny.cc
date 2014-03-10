@@ -4,6 +4,9 @@ namespace Berny\Bundle\FrontBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
+/**
+ * @group functional
+ */
 class DefaultControllerTest extends WebTestCase
 {
     public function test_home_renders_successfully()

@@ -12,7 +12,7 @@ class DefaultController extends Controller
         $form = $this->createForm('rnycc_urlshortener')->add('save', 'submit');
 
         if ($form->handleRequest($request) && $form->isSubmitted()) {
-            return $this->redirect($this->generateUrl('berny_front_homepage'));
+            return $this->redirect($this->generateUrl('rnycc_frontpage'));
         }
 
         return $this->render('BernyFrontBundle:Default:index.html.twig', array(

@@ -30,5 +30,6 @@ class DefaultControllerTest extends WebTestCase
 
         $client->followRedirect();
         $this->assertTrue($client->getResponse()->isSuccessful(), 'Response before form processing must be successful');
+        $this->assertSame('rnycc_frontpage', $client->getRequest()->attributes->get('_route'));
     }
 }

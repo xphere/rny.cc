@@ -11,7 +11,7 @@ class DefaultController extends Controller
     {
         $form = $this->createForm('rnycc_urlshortener')->add('save', 'submit');
 
-        if ($form->handleRequest($request) && $form->isSubmitted()) {
+        if ($form->handleRequest($request)->isValid()) {
             return $this->redirect($this->generateUrl('rnycc_frontpage'));
         }
 

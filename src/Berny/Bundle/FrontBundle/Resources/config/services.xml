@@ -13,7 +13,7 @@
             <argument type="service" id="rnycc.url.manager" />
         </service>
 
-        <service id="rnycc.form.url_shortener" class="Berny\Bundle\FrontBundle\Form\UrlShortenerType">
+        <service id="rnycc.url_shortener.form" class="Berny\Bundle\FrontBundle\Form\UrlShortenerType">
             <tag name="form.type" alias="rnycc_urlshortener" />
         </service>
     </services>

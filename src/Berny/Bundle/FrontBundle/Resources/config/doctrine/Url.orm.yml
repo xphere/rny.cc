@@ -1,0 +1,11 @@
+Berny\Bundle\FrontBundle\Entity\Url:
+    type: entity
+    table: url
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        url:
+            type: string

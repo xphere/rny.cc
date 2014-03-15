@@ -3,6 +3,7 @@
 namespace Berny\Bundle\FrontBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class UrlShortenerType extends AbstractType
@@ -12,6 +13,11 @@ class UrlShortenerType extends AbstractType
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
+    }
+
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder->add('url', 'url');
     }
 
     /**

@@ -7,7 +7,10 @@
     <services>
         <service id="rnycc.url.manager" class="Berny\Bundle\FrontBundle\Model\UrlManager">
             <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument type="service" id="rnycc.url.orm.factory" />
         </service>
+
+        <service id="rnycc.url.orm.factory" class="Berny\Bundle\FrontBundle\Entity\UrlFactory" />
 
         <service id="rnycc.url_shortener.handler" class="Berny\Bundle\FrontBundle\Form\UrlShortenerHandler">
             <argument type="service" id="rnycc.url.manager" />

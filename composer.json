@@ -21,6 +21,9 @@
         "incenteev/composer-parameter-handler": "~2.0"
     },
     "scripts": {
+        "post-dump-autoload": [
+            "ComponentInstaller\\Installer::postAutoloadDump"
+        ],
         "post-install-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
@@ -35,7 +38,8 @@
         ]
     },
     "config": {
-        "bin-dir": "bin"
+        "bin-dir": "bin",
+        "component-dir": "src/Berny/Bundle/FrontBundle/Resources/components"
     },
     "extra": {
         "symfony-app-dir": "app",

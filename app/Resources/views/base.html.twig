@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 {% spaceless %}
-<html lang="{{ app.request.locale }}">
+<html class="no-js" lang="{{ app.request.locale }}">
 <head>
     <meta charset="utf-8" />
     <title>{% block title '' %}</title>
     <meta name="description" content="{% block description '' %}" />
     <meta name="viewport" content="width=device-width" />
-    {% block head '' %}
+    {% block head %}
+        <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js')</script>
+    {% endblock %}
     {% block sheets '' %}
 </head>
 <body>

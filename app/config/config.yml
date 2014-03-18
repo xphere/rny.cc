@@ -36,6 +36,8 @@ assetic:
         - BernyFrontBundle
     filters:
         cssrewrite: ~
+        less:
+            apply_to: css
 
 # Doctrine Configuration
 doctrine:

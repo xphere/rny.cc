@@ -3,5 +3,6 @@
   "author": "Berny Cantos <be@rny.cc>",
   "license": "MIT",
   "dependencies": {
+    "less": "~1.7.0"
   }
 }

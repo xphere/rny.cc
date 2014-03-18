@@ -38,6 +38,8 @@ assetic:
         cssrewrite: ~
         less:
             apply_to: css
+        uglifycss: ~
+        uglifyjs2: ~
 
 # Doctrine Configuration
 doctrine:

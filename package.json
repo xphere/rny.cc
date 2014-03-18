@@ -3,6 +3,8 @@
   "author": "Berny Cantos <be@rny.cc>",
   "license": "MIT",
   "dependencies": {
+    "uglify-js": "~2.4.13",
+    "uglifycss": "0.0.8",
     "less": "~1.7.0"
   }
 }

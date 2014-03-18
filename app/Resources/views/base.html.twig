@@ -2,10 +2,11 @@
 {% spaceless %}
 <html class="no-js" lang="{{ app.request.locale }}">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>{% block title '' %}</title>
-    <meta name="description" content="{% block description '' %}" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="{% block description '' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     {% block head %}
         <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js')</script>
     {% endblock %}

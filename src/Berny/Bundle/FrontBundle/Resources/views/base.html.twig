@@ -1,4 +1,12 @@
 {% extends '::base.html.twig' %}
+{% import _self as macro %}
+
+{% macro copyright(year) %}
+    {% spaceless %}
+        {% set current_year = 'now'|date('Y') %}
+        ©{{ year }}{% if current_year > year %}-{{ current_year }}{% endif %}
+    {% endspaceless %}
+{% endmacro %}
 
 {% block sheets %}
     {% stylesheets
@@ -16,4 +24,21 @@
     %}
         <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
+{% endblock %}
+
+{% block body %}
+    <header class="site-branding">
+        <header class="title">
+            <h1>rny.cc</h1>
+        </header>
+    </header>
+
+    <main class="main-content">
+        {% block main '' %}
+    </main>
+
+    <footer class="site-footer">
+        <span class="site">rny.cc</span>
+        <span class="copyright">{{ macro.copyright(2013) }} by <a href="//twitter.com/xphere">Berny Cantos</a></span>
+    </footer>
 {% endblock %}

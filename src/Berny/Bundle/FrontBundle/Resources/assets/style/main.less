@@ -1,1 +1,102 @@
 @import (less) "../../components/normalize-css/normalize.css";
+@import url("//fonts.googleapis.com/css?family=Ubuntu");
+
+@font-size: 16px;
+@font-height: 20px;
+@line-height: unit(@font-height/@font-size);
+@max-width: 960px;
+@num-columns: 12;
+@gap: 15px;
+@column-width: (@max-width / @num-columns) - @gap;
+@main-fg-color: #333;
+@main-bg-color: #fff;
+@caption-fg-color: #fff;
+@caption-bg-color: #dd4814;
+@border-color: #bf3e11;
+@input-border-color: #ccc;
+@input-border-radius: 4px;
+
+.columns(@num) {
+    max-width: @max-width;
+    padding: 0 (@gap / 2);
+    width: percentage(@num / @num-columns);
+}
+
+body {
+    font-family: "Ubuntu", Tahoma, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: @font-size;
+    line-height: @line-height;
+    color: @main-fg-color;
+    background-color: @main-bg-color;
+}
+
+label {
+    margin-bottom: (@gap / 2);
+    font-weight: bold;
+}
+
+input[type="url"],
+button[type="submit"] {
+    background-image: none;
+    border: 1px solid @input-border-color;
+    border-radius: @input-border-radius;
+    color: @main-fg-color;
+    display: inline-block;
+    font-size: @font-size;
+    line-height: @line-height;
+    padding: (@gap / 2);
+}
+
+.site-branding,
+.site-footer {
+    background-color: @caption-bg-color;
+    color: @caption-fg-color;
+    width: 100%;
+}
+
+.site-branding {
+    border-bottom: 1px solid @border-color;
+    margin-bottom: @gap;
+
+    .title {
+        .columns(@num-columns);
+        margin: auto;
+        h1 {
+            margin: 0 -@gap 0 -@gap;
+            padding: @gap/2 @gap;
+        }
+    }
+}
+
+.main-content {
+    .columns(@num-columns);
+    margin: auto;
+}
+
+.site-footer {
+    background-color: @caption-bg-color;
+    border-top: 1px solid @border-color;
+    bottom: 0;
+    position: fixed;
+    color: @caption-fg-color;
+    padding: 1em;
+    right: 0;
+    text-align: right;
+    width: 100%;
+}
+
+#rnycc_urlshortener {
+    text-align: center;
+
+    div {
+        display: inline;
+    }
+
+    label:after {
+        content: ": ";
+    }
+
+    button[type="submit"] {
+        margin-left: @gap;
+    }
+}

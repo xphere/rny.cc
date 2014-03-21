@@ -1,0 +1,19 @@
+{% extends '::base.html.twig' %}
+
+{% block sheets %}
+    {% stylesheets
+        output='css/app.css'
+        '@BernyFrontBundle/Resources/assets/style/main.less'
+    %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block scripts %}
+    {% javascripts
+        output='js/app.js'
+        '@BernyFrontBundle/Resources/components/require.js'
+    %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}

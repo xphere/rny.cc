@@ -9,6 +9,8 @@
     "require": {
         "php": ">=5.3.3",
         "symfony/symfony": "~2.4",
+        "components/bootstrap": "~3.0",
+        "components/normalize.css": "~2.0",
         "doctrine/orm": "~2.2,>=2.2.3",
         "doctrine/doctrine-bundle": "~1.2",
         "twig/extensions": "~1.0",
@@ -21,6 +23,9 @@
         "incenteev/composer-parameter-handler": "~2.0"
     },
     "scripts": {
+        "post-dump-autoload": [
+            "ComponentInstaller\\Installer::postAutoloadDump"
+        ],
         "post-install-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
@@ -35,7 +40,8 @@
         ]
     },
     "config": {
-        "bin-dir": "bin"
+        "bin-dir": "bin",
+        "component-dir": "src/Berny/Bundle/FrontBundle/Resources/components"
     },
     "extra": {
         "symfony-app-dir": "app",

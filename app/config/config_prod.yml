@@ -23,3 +23,10 @@ monolog:
             level: debug
         console:
             type:  console
+
+assetic:
+    filters:
+        uglifyjs2:
+            apply_to: js
+        uglifycss:
+            apply_to: css

@@ -7,4 +7,9 @@
     <route id="rnycc_frontpage" pattern="/">
         <default key="_controller">BernyFrontBundle:Default:index</default>
     </route>
+
+    <route id="rnycc_redirect" pattern="/{id}">
+        <default key="_controller">BernyFrontBundle:Default:redirect</default>
+        <requirement key="id">\d+</requirement>
+    </route>
 </routes>

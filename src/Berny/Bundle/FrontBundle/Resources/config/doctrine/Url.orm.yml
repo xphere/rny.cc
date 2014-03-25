@@ -9,3 +9,6 @@ Berny\Bundle\FrontBundle\Entity\Url:
     fields:
         url:
             type: string
+        shortUrl:
+            type: string
+            nullable: true

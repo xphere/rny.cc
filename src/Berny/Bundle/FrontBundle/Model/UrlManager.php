@@ -6,7 +6,9 @@ use Doctrine\Common\Persistence\ObjectManager;
 
 class UrlManager
 {
+    /** @var ObjectManager */
     protected $om;
+    /** @var UrlFactory */
     protected $factory;
 
     public function __construct(ObjectManager $objectManager, UrlFactory $factory)

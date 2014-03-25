@@ -2,6 +2,7 @@
 
 namespace Berny\Bundle\FrontBundle\Controller;
 
+use Berny\Bundle\FrontBundle\Entity\Url;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -20,5 +21,10 @@ class DefaultController extends Controller
         return $this->render('BernyFrontBundle:Default:index.html.twig', array(
             'form' => $form->createView(),
         ));
+    }
+
+    public function redirectAction(Url $url)
+    {
+        return $this->redirect($url->getUrl());
     }
 }

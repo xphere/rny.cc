@@ -21,7 +21,10 @@
         </service>
 
         <service class="Berny\Bundle\FrontBundle\Entity\Listener\UrlShortenerListener">
+            <argument type="service" id="rnycc.url.shortener" />
             <tag name="doctrine.event_subscriber" />
         </service>
+
+        <service id="rnycc.url.shortener" class="Berny\Bundle\FrontBundle\Shortener\Base64" />
     </services>
 </container>

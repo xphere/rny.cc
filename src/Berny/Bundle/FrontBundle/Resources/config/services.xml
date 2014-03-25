@@ -19,5 +19,17 @@
         <service id="rnycc.url_shortener.form" class="Berny\Bundle\FrontBundle\Form\UrlShortenerType">
             <tag name="form.type" alias="rnycc_urlshortener" />
         </service>
+
+        <service class="Berny\Bundle\FrontBundle\Entity\Listener\UrlShortenerListener">
+            <argument type="service" id="rnycc.url.shortener" />
+            <tag name="doctrine.event_subscriber" />
+        </service>
+
+        <service id="rnycc.url.shortener" class="Berny\Bundle\FrontBundle\Shortener\Shrinker" lazy="true">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument type="service" id="rnycc.url.shortener.base64" />
+        </service>
+
+        <service id="rnycc.url.shortener.base64" class="Berny\Bundle\FrontBundle\Shortener\Base64" />
     </services>
 </container>

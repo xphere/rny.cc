@@ -2,5 +2,14 @@
 
 {% block main %}
     {{ parent() }}
+
+    {% for message in app.session.flashBag.get('success') %}
+        {% set url = url('rnycc_redirect', { shortUrl: message.shortUrl }) %}
+        <dl class="success-message">
+            <dt>Short url</dt>
+            <dd><a href="{{ url }}">{{ url }}</a></dd>
+        </dl>
+    {% endfor %}
+
     {{ form(form) }}
 {% endblock %}

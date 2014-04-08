@@ -9,6 +9,8 @@ Berny\Bundle\FrontBundle\Entity\Url:
     fields:
         url:
             type: string
+            unique: true
         shortUrl:
             type: string
             nullable: true
+            unique: true

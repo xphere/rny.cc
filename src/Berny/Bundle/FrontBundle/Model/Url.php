@@ -10,7 +10,7 @@ class Url
     public function __construct($url, $shortUrl = null)
     {
         $this->url = (string) $url;
-        $this->shortUrl = $shortUrl;
+        $this->shortUrl = null === $shortUrl ? null : (string)$shortUrl;
     }
 
     public function getUrl()

@@ -3,28 +3,24 @@
 namespace Berny\Bundle\FrontBundle\Shortener;
 
 use Berny\Bundle\FrontBundle\Model\Url;
-use Berny\Bundle\FrontBundle\Model\UrlShortener;
 use Doctrine\Common\Collections\Criteria;
-use Doctrine\ORM\EntityManager;
+use Doctrine\Common\Collections\Selectable;
 
-class Shrinker implements UrlShortener
+class ShrinkerDecorator extends Decorator
 {
-    /** @var EntityManager */
-    protected $em;
-    /** @var UrlShortener */
-    protected $innerShortener;
+    /** @var Selectable */
+    protected $selectable;
 
-    public function __construct(EntityManager $em, UrlShortener $shortener)
+    public function setSelectable(Selectable $selectable)
     {
-        $this->em = $em;
-        $this->innerShortener = $shortener;
+        $this->selectable = $selectable;
     }
 
     public function shortenUrl(Url $url)
     {
-        $value = $this->innerShortener->shortenUrl($url);
+        $shorten = parent::shortenUrl($url);
 
-        return $this->getShortestAvailable($value);
+        return $this->getShortestAvailable($shorten);
     }
 
     protected function getShortestAvailable($shortUrl)
@@ -34,7 +30,7 @@ class Shrinker implements UrlShortener
             $criteria->expr()
                 ->in('shortUrl', $this->getAllPrefixes($shortUrl))
         );
-        $length = $this->em->getRepository('BernyFrontBundle:Url')->matching($criteria)->count();
+        $length = $this->selectable->matching($criteria)->count();
 
         return substr($shortUrl, 0, $length + 1);
     }

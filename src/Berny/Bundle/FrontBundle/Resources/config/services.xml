@@ -25,9 +25,17 @@
             <tag name="doctrine.event_subscriber" />
         </service>
 
-        <service id="rnycc.url.shortener" class="Berny\Bundle\FrontBundle\Shortener\Shrinker" lazy="true">
-            <argument type="service" id="doctrine.orm.entity_manager" />
+        <service id="rnycc.url.shortener" class="Berny\Bundle\FrontBundle\Shortener\ShrinkerDecorator" lazy="true">
             <argument type="service" id="rnycc.url.shortener.base64" />
+            <call method="setSelectable">
+                <argument type="service">
+                    <service class="Doctrine\ORM\EntityRepository"
+                             factory-service="doctrine.orm.entity_manager"
+                             factory-method="getRepository">
+                        <argument>BernyFrontBundle:Url</argument>
+                    </service>
+                </argument>
+            </call>
         </service>
 
         <service id="rnycc.url.shortener.base64" class="Berny\Bundle\FrontBundle\Shortener\Base64" />

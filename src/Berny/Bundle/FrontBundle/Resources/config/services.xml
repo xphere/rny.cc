@@ -14,6 +14,7 @@
 
         <service id="rnycc.url_shortener.handler" class="Berny\Bundle\FrontBundle\Form\UrlShortenerHandler">
             <argument type="service" id="rnycc.url.manager" />
+            <argument type="service" id="rnycc.url.repository" />
         </service>
 
         <service id="rnycc.url_shortener.form" class="Berny\Bundle\FrontBundle\Form\UrlShortenerType">
@@ -28,15 +29,17 @@
         <service id="rnycc.url.shortener" class="Berny\Bundle\FrontBundle\Shortener\ShrinkerDecorator" lazy="true">
             <argument type="service" id="rnycc.url.shortener.base64" />
             <call method="setSelectable">
-                <argument type="service">
-                    <service class="Doctrine\ORM\EntityRepository"
-                             factory-service="doctrine.orm.entity_manager"
-                             factory-method="getRepository">
-                        <argument>BernyFrontBundle:Url</argument>
-                    </service>
-                </argument>
+                <argument type="service" id="rnycc.url.repository" />
             </call>
         </service>
+
+        <service id="rnycc.url.repository" parent="orm.repository">
+            <argument>BernyFrontBundle:Url</argument>
+        </service>
+
+        <service id="orm.repository" class="Doctrine\ORM\EntityRepository" abstract="true"
+                 factory-service="doctrine.orm.entity_manager" factory-method="getRepository"
+        />
 
         <service id="rnycc.url.shortener.base64" class="Berny\Bundle\FrontBundle\Shortener\Base64" />
     </services>

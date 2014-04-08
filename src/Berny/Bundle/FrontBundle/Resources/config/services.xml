@@ -25,7 +25,7 @@
             <tag name="doctrine.event_subscriber" />
         </service>
 
-        <service id="rnycc.url.shortener" class="Berny\Bundle\FrontBundle\Shortener\Shrinker" lazy="true">
+        <service id="rnycc.url.shortener" class="Berny\Bundle\FrontBundle\Shortener\ShrinkerDecorator" lazy="true">
             <argument type="service" id="rnycc.url.shortener.base64" />
             <call method="setSelectable">
                 <argument type="service">

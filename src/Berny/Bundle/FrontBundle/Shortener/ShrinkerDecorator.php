@@ -3,21 +3,13 @@
 namespace Berny\Bundle\FrontBundle\Shortener;
 
 use Berny\Bundle\FrontBundle\Model\Url;
-use Berny\Bundle\FrontBundle\Model\UrlShortener;
 use Doctrine\Common\Collections\Criteria;
 use Doctrine\Common\Collections\Selectable;
 
-class Shrinker implements UrlShortener
+class ShrinkerDecorator extends Decorator
 {
-    /** @var UrlShortener */
-    protected $innerShortener;
     /** @var Selectable */
     protected $selectable;
-
-    public function __construct(UrlShortener $shortener)
-    {
-        $this->innerShortener = $shortener;
-    }
 
     public function setSelectable(Selectable $selectable)
     {
@@ -26,9 +18,9 @@ class Shrinker implements UrlShortener
 
     public function shortenUrl(Url $url)
     {
-        $value = $this->innerShortener->shortenUrl($url);
+        $shorten = parent::shortenUrl($url);
 
-        return $this->getShortestAvailable($value);
+        return $this->getShortestAvailable($shorten);
     }
 
     protected function getShortestAvailable($shortUrl)

@@ -8,8 +8,8 @@
         <default key="_controller">BernyFrontBundle:Default:index</default>
     </route>
 
-    <route id="rnycc_redirect" pattern="/{id}">
+    <route id="rnycc_redirect" pattern="/{shortUrl}">
         <default key="_controller">BernyFrontBundle:Default:redirect</default>
-        <requirement key="id">\d+</requirement>
+        <requirement key="shortUrl">[A-Za-z0-9]+</requirement>
     </route>
 </routes>
